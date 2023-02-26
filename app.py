@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import random
+import concurrent.futures
 app = Flask(__name__)
 
 
@@ -17,4 +18,4 @@ def get_summary():
         return f.readlines()
 
 if __name__ == '__main__':
-   app.run()
+   concurrent.futures.ThreadPoolExecutor().submit(app.run)
